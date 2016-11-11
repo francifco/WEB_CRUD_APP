@@ -1,0 +1,22 @@
+{
+  "name": "web_crud_web",
+  "version": "1.0.0",
+  "description": "this is the app web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francifco/WEB_CRUD_APP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/francifco/WEB_CRUD_APP/issues"
+  },
+  "homepage": "https://github.com/francifco/WEB_CRUD_APP#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
