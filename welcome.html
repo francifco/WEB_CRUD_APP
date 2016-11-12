@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+
+	<meta charset="utf-8">
+	<title>Welcome</title>	
+ 	<link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+	<body>
+
+		<p><br/><br/></p>
+		<div class="container">
+			<p>
+		    	<button class="btn btn-info" id="showAll" >Show all users</button>
+		    	<button class="btn btn-info" id="activedUsers" >Enabled users</button>
+		    	<button class="btn btn-info" id="disabledUsers" >Disabled users</button>
+		    </p>
+	    </div>
+
+	    <div class="container">
+			<table class="table table-bordered table-striped table-hover">
+			    <tr>
+			      <th>Username</th>
+			      <th>Phone Number</th>
+			      <th>Mail</th>
+			      <th>Enable/Disable</th>
+			    </tr>
+			    <tbody></tbody>
+			</table>
+		</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="javaScript/welcomEventHandlerExecuter.js"> </script>  
+
+	</body>
+</html>
+

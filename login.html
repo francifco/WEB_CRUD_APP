@@ -1,52 +1,60 @@
 
 
-<head>
-<link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+<!DOCTYPE html>
+<html>
+
+  <body>
+    
+    <head>
+      <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
 
 
-<style>
+    <style>
 
-    form {
-    display: inline-block;
-    text-align: center;
-    }
+      form {
+        display: inline-block;
+        text-align: center;
+      }
 
-</style>
+    </style>
 
 
-<form class="form-horizontal">
-  <div class="form-group">
-    <label for="inputEmail" class="col-sm-4 control-label">Username</label>
-    <div class="col-sm-8">
-      <input type="name" class="form-control" id="inputUsername" placeholder="Username">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputPassword" class="col-sm-4 control-label">Password</label>
-    <div class="col-sm-8">
-      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" id="rememberMeCheckBox"> Remember me
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default" id="signInButton" >Sign in</button>
-    </div>
-  </div>
+    <form class="form-horizontal">
+        <div class="form-group">
+          <label for="inputEmail" class="col-sm-4 control-label">Username</label>
+          <div class="col-sm-8">
+            <input type="name" class="form-control" id="inputUsername" placeholder="Username">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="col-sm-4 control-label">Password</label>
+          <div class="col-sm-8">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="rememberMeCheckBox"> Remember me
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success" id="signInButton" >Sign in</button>
+          </div>
+        </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="javaScript/EventHandlerExecuter.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="javaScript/loginEventHandlerExecuter.js"></script>
 
-</form> 
+    </form> 
 
+  </body>
+
+</html>
 
 
