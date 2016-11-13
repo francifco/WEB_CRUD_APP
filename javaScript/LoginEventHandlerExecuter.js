@@ -1,6 +1,6 @@
 
 
-$("#signInButton").click(function(){
+$("#idSignIn").click(function(){
 
 
 var dataTosend = {
@@ -35,6 +35,12 @@ $.ajax({
       });
 event.preventDefault();
 });
+
+
+$("#idRegister").click(function(){
+  window.location.href = "register.html"
+});
+
 
 
  
