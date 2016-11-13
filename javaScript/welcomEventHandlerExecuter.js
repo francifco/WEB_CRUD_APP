@@ -2,52 +2,138 @@
 $(document).ready(function(){
 
     var user = JSON.parse(sessionStorage.getItem("user"));
+
     
-	$.ajax({
+    if(user.isAdmin === "true") {
+    
+        viewAdmin();
+
+    } else {
+        viewStandarUser();
+    }
+
+});
+
+
+
+$("#idLongout").click(function(){
+
+    localStorage.clear();
+    window.location.href = "login.html"
+});
+
+
+function viewStandarUser(){
+
+    var user = JSON.parse(sessionStorage.getItem("user"));
+
+    $("#idShowAll").hide();
+    $("#idActivedUsers").hide();
+    $("#idDisabledUsers").hide();
+
+
+    $.ajax({
          url: "http://localhost:8080/allUsers",
          type: "GET",
          beforeSend: function(xhr){xhr.setRequestHeader('token', user.token);},
          
          success: function(result) { 
-         	
-         	var test = JSON.stringify(result);
-         	var json = JSON.parse(test);
-         	var active;
-         	var colorBtn;
-         	var items = [];
+            
+            var test = JSON.stringify(result);
+            var json = JSON.parse(test);
+            var items = [];
 
-         	for (var i = 0; i < json.count; i++) {
-         		
-         		active = "enable";
-         		colorBtn = "success";
+            for (var i = 0; i < json.count; i++) {
+                
+                active = "enable";
+                colorBtn = "success";
 
-         		items.push("<tr>");
-         		items.push("<td id=''"+i+"''>"+json.rows[i].username+ "</td>");
-				items.push("<td id=''"+i+"''>"+json.rows[i].phoneNumber+ "</td>");
-				items.push("<td id=''"+i+"''>"+json.rows[i].mail+ "</td>");
+                items.push("<tr>");
 
-				if(json.rows[i].active){
-					active = "disable";
-					colorBtn = "danger";
-				}
+                if(user.username === json.rows[i].username){
+                    
+                    items.push("<td id=''"+i+"''>"+json.rows[i].username+ "</td>");
+                    items.push("<td id=''"+i+"''>"+json.rows[i].phoneNumber+ "</td>");
+                    items.push("<td id=''"+i+"''>"+json.rows[i].mail+ "</td>");
 
-				items.push("<td><div><button  onclick='disableOrEnableUser("+json.rows[i].id+","
-					+json.rows[i].active+")' class='btn btn-"
-					+colorBtn+"''>"+ "To "+active +"</button>");
-				items.push("</tr>");
+                    if(json.rows[i].active){
 
-			}
+                        items.push("<td id=''"+i+"''> IS ACTIVATED!</td>");
 
-         	$("<tbody/>", {html: items.join("")}).appendTo("table");
+                    } else {
+                        items.push("<td id=''"+i+"''> WHAITING RESPOND!</td>"); 
+                    }
+
+                } else {
+
+                    items.push("<td id=''"+i+"''>"+json.rows[i].username+ "</td>");
+                    items.push("<td id=''"+i+"''> No view </td>");
+                    items.push("<td id=''"+i+"''> No view </td>");
+                    items.push("<td id=''"+i+"''> No view </td>");
+                }
 
 
+                items.push("</tr>");
+            }
+
+            $("<tbody/>", {html: items.join("")}).appendTo("table");
          },
 
          error: function (error) {
             alert("Invalid Credentials"); 
          }
     });
-});
+
+}
+
+function viewAdmin(){
+
+    var user = JSON.parse(sessionStorage.getItem("user"));
+
+    $.ajax({
+         url: "http://localhost:8080/allUsers",
+         type: "GET",
+         beforeSend: function(xhr){xhr.setRequestHeader('token', user.token);},
+         
+         success: function(result) { 
+            
+            var test = JSON.stringify(result);
+            var json = JSON.parse(test);
+            var active;
+            var colorBtn;
+            var items = [];
+
+            for (var i = 0; i < json.count; i++) {
+                
+                active = "enable";
+                colorBtn = "success";
+
+                items.push("<tr>");
+                items.push("<td id=''"+i+"''>"+json.rows[i].username+ "</td>");
+                items.push("<td id=''"+i+"''>"+json.rows[i].phoneNumber+ "</td>");
+                items.push("<td id=''"+i+"''>"+json.rows[i].mail+ "</td>");
+
+                if(json.rows[i].active){
+                    active = "disable";
+                    colorBtn = "danger";
+                }
+
+                items.push("<td><div><button  onclick='disableOrEnableUser("+json.rows[i].id+","
+                    +json.rows[i].active+")' class='btn btn-"
+                    +colorBtn+"''>"+ "To "+active +"</button>");
+                items.push("</tr>");
+
+            }
+
+            $("<tbody/>", {html: items.join("")}).appendTo("table");
+         },
+
+         error: function (error) {
+            alert("Invalid Credentials"); 
+         }
+    });
+
+} 
 
 function disableOrEnableUser(pid, pstatus){
 
